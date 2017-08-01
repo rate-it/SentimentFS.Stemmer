@@ -148,7 +148,7 @@ Target "DotnetPack" (fun _ ->
 Target "Publish" (fun _ ->
     Paket.Push(fun c ->
             { c with
-                PublishUrl = "https://www.nuget.org"
+                PublishUrl = "https://www.myget.org/F/sentimentfs/api/v2/package"
                 WorkingDir = "dist"
             }
         )
