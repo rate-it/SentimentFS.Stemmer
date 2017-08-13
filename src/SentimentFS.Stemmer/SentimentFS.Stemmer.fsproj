@@ -21,7 +21,7 @@
   </PropertyGroup>
   <ItemGroup>
     <Compile Include="Config.fs" />
-    <Compile Include="Library.fs" />
+    <Compile Include="Step0.fs" />
   </ItemGroup>
   <Import Project="..\..\.paket\Paket.Restore.targets" />
 </Project>
