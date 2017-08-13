@@ -11,7 +11,6 @@ module Step0 =
     [<CompiledName("TrimStartApostrophe")>]
     let trimStartApostrophe = skipPrefix "'"
 
-
     [<CompiledName("RemoveSApostrophe")>]
     let removeSApostrophe = removeSuffix "'s"
 
