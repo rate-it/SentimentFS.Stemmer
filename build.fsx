@@ -10,6 +10,14 @@ let release = LoadReleaseNotes "RELEASE_NOTES.md"
 let srcGlob = "src/**/*.fsproj"
 let testsGlob = "tests/**/*.fsproj"
 
+let dotnetcliVersion = "2.0.0"
+
+let mutable dotnetExePath = "dotnet"
+
+Target "InstallDotNetCore" (fun _ ->
+    dotnetExePath <- DotNetCli.InstallDotNetSDK dotnetcliVersion
+)
+
 Target "Clean" (fun _ ->
     ["bin"; "temp" ;"dist"]
     |> CleanDirs
@@ -167,6 +175,7 @@ Target "Release" (fun _ ->
 )
 
 "Clean"
+  ==> "InstallDotNetCore"
   ==> "DotnetRestore"
   ==> "DotnetBuild"
   ==> "DotnetTest"
