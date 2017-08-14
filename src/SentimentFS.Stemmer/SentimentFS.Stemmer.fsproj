@@ -23,6 +23,7 @@
     <Compile Include="Config.fs" />
     <Compile Include="Rules.fs" />
     <Compile Include="Step0.fs" />
+    <Compile Include="Step1.fs" />
   </ItemGroup>
   <Import Project="..\..\.paket\Paket.Restore.targets" />
 </Project>

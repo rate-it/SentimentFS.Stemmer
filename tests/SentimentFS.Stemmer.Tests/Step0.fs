@@ -1,5 +1,4 @@
-module SentimentFS.Stemmer.Tests.Steps
-
+namespace SentimentFS.Stemmer.Tests.Steps
 
 module Step0 =
     open Expecto

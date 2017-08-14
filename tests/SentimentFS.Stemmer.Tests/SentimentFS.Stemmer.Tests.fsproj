@@ -5,6 +5,7 @@
   </PropertyGroup>
   <ItemGroup>
     <Compile Include="Step0.fs" />
+    <Compile Include="Step1.fs" />
     <Compile Include="Main.fs" />
   </ItemGroup>
   <ItemGroup>

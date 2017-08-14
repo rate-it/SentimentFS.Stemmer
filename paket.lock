@@ -624,7 +624,7 @@ NUGET
       System.Threading (>= 4.3) - restriction: || (&& (== net461) (< net45)) (&& (== net461) (>= dnxcore50)) (== netstandard1.6)
       System.Xml.ReaderWriter (>= 4.3) - restriction: || (&& (== net461) (< net45)) (&& (== net461) (>= dnxcore50)) (== netstandard1.6)
   remote: https://www.myget.org/F/sentimentfs/api/v2
-    SentimentFS.TextUtilities (0.2.0)
+    SentimentFS.TextUtilities (0.3.0)
       FSharp.Core (>= 4.2.2)
       FSharp.NET.Sdk (>= 1.0.5)
       NETStandard.Library (>= 1.6.1) - restriction: || (&& (== net461) (>= netstandard1.6)) (== netstandard1.6)
