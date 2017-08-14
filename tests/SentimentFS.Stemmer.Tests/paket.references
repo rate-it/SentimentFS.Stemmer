@@ -1,5 +1,4 @@
 Expecto
 FSharp.Core
-FSharp.NET.Sdk
 dotnet-mono
 Microsoft.DotNet.Watcher.Tools

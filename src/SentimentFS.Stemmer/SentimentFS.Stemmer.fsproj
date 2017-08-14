@@ -1,4 +1,4 @@
-<Project Sdk="FSharp.NET.Sdk;Microsoft.NET.Sdk">
+<Project Sdk="Microsoft.NET.Sdk">
   <PropertyGroup>
     <TargetFrameworks>netstandard1.6;net461</TargetFrameworks>
   </PropertyGroup>
@@ -7,12 +7,12 @@
     <Description>SentimentFS_Stemmer does the thing!</Description>
     <!-- summary is not migrated from project.json, but you can use the <Description> property for that if needed. -->
     <PackageTags>f#, fsharp</PackageTags>
-    <PackageProjectUrl>https://github.com/SentimentFS/SentimentFS_Stemmer</PackageProjectUrl>
-    <PackageLicenseUrl>https://github.com/SentimentFS/SentimentFS_Stemmer/blob/master/LICENSE.md</PackageLicenseUrl>
+    <PackageProjectUrl>https://github.com/SentimentFS/SentimentFS.Stemmer</PackageProjectUrl>
+    <PackageLicenseUrl>https://github.com/SentimentFS/SentimentFS.Stemmer/blob/master/LICENSE.md</PackageLicenseUrl>
     <PackageRequireLicenseAcceptance>false</PackageRequireLicenseAcceptance>
     <RepositoryType>git</RepositoryType>
     <Authors>MyUsername</Authors>
-    <RepositoryUrl>https://github.com/SentimentFS/SentimentFS_Stemmer</RepositoryUrl>
+    <RepositoryUrl>https://github.com/SentimentFS/SentimentFS.Stemmer</RepositoryUrl>
     <!-- owners is not supported in MSBuild -->
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)'=='Release'">
