@@ -3,6 +3,7 @@ namespace SentimentFS.Stemmer.Steps
 module Step2 =
     open System.Text.RegularExpressions
     open SentimentFS.TextUtilities.Text
+    open SentimentFS.TextUtilities.Regex
     open SentimentFS.Stemmer.Rules
     open SentimentFS.Stemmer
 
@@ -56,4 +57,4 @@ module Step2 =
         | _ -> word
 
     [<CompiledName("Apply")>]
-    let apply = replaceSuffix |> replaceSuffixY
+    let apply = replaceSuffix >> replaceSuffixY
