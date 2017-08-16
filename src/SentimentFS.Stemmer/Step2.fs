@@ -8,9 +8,9 @@ module Step2 =
 
     [<CompiledName("postRemoveEdEdlyIngIngly")>]
     let postRemoveEdEdlyIngIngly(word: string) =
-        if Text.endsWith (word) ([|"at"; "bi"; "iz"|]) then
+        if endsWith (word) ([|"at"; "bi"; "iz"|]) then
             word + "e"
-        elif Text.endsWith (word) (doubles) then
+        elif endsWith (word) (doubles) then
             word.Substring(0, word.Length - 1)
         elif Rules.isShort(word) then
             word + "e"
@@ -27,14 +27,14 @@ module Step2 =
 
     [<CompiledName("ReplaceEedEddlyInR1")>]
     let replaceEedEddlyInR1(word: string) =
-        if Text.endsWith(Rules.r1(word))([|"eedly"; "eed"|]) then
-            Found((word |> Text.replaceSuffix ("eedly", "ee") |> Text.replaceSuffix ("eed", "ee")))
+        if endsWith(Rules.r1(word))([|"eedly"; "eed"|]) then
+            Found((word |> replaceSuffix "eedly" "ee" |> replaceSuffix "eed" "ee"))
         else
             Found(word)
 
     [<CompiledName("ReplaceEedEedly")>]
     let replaceEedEedly(word: string) =
-        if Text.endsWith(word)([|"eedly"; "eed"|]) then
+        if endsWith(word)([|"eedly"; "eed"|]) then
             word |> replaceEedEddlyInR1
         else
             Next(word)
@@ -56,7 +56,4 @@ module Step2 =
         | _ -> word
 
     [<CompiledName("Apply")>]
-    let apply(word: string) =
-        let result = word |> replaceSuffix |> replaceSuffixY
-        log "Step 2: %s" result
-        result
+    let apply = replaceSuffix |> replaceSuffixY
