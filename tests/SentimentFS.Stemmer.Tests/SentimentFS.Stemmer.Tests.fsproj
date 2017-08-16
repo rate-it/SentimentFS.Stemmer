@@ -4,6 +4,7 @@
     <TargetFrameworks>netcoreapp2.0;net461</TargetFrameworks>
   </PropertyGroup>
   <ItemGroup>
+    <Compile Include="Rules.fs" />
     <Compile Include="Step0.fs" />
     <Compile Include="Step1.fs" />
     <Compile Include="Main.fs" />
