@@ -54,4 +54,18 @@ module Rules =
                     let subject = Rules.isShort "disturb"
                     Expect.isFalse subject "is not Short"
                 ]
+            testList "replaceR1Suffix" [
+                testCase """("sensational", "ational", "ate")""" <| fun _ ->
+                    let subject = ("sensational" |> Rules.replaceR1Suffix "ational" "ate")
+                    Expect.equal subject (Found("sensate")) "should be Found and equal sensate"
+                testCase """("nationalism", "alism", "al")""" <| fun _ ->
+                    let subject = ("nationalism" |> Rules.replaceR1Suffix "alism" "al")
+                    Expect.equal subject (Found("national")) "should be Found and equal national"
+                testCase """("nationalizer", "izer", "ize")""" <| fun _ ->
+                    let subject = ("nationalizer" |> Rules.replaceR1Suffix "izer" "ize")
+                    Expect.equal subject (Found("nationalize")) "should be Found and equal nationalize"
+                testCase """("nationalli", "alli", "al")""" <| fun _ ->
+                    let subject = ("nationalli" |> Rules.replaceR1Suffix "alli" "al")
+                    Expect.equal subject (Found("national")) "should be Found and equal national"
+            ]
         ]

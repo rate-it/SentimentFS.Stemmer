@@ -13,6 +13,7 @@ module Rules =
     let doubles = [|"bb"; "dd"; "ff"; "gg"; "mm"; "nn"; "pp"; "rr"; "tt"|]
     let shortSyllable = sprintf "((%s%s%s)|(^%s%s))" consonant vowels nonVowelWXY vowels consonant
     let rVc = sprintf "^%s*%s+%s" consonant vowels consonant
+    let liEndings = [|"cli"; "dli"; "eli"; "gli"; "hli"; "kli"; "mli"; "nli"; "rli"; "tli"|]
 
     [<CompiledName("R1")>]
     let r1(word: string) =
@@ -26,3 +27,16 @@ module Rules =
     [<CompiledName("IsShort")>]
     let isShort(word: string) =
         r1(word) = "" && Regex.IsMatch(word, shortSyllable)
+
+    let private foundSuffixInR1(suffix: string) (replacement: string) (word: string) =
+        match word |> r1 with
+        | SuffixMatch suffix _ ->
+            Found(word |> replaceSuffix suffix replacement)
+        | _ ->  Found(word)
+
+    [<CompiledName("ReplaceR1Suffix")>]
+    let replaceR1Suffix (suffix: string) (replacement: string) (word: string) =
+        match word with
+        | SuffixMatch suffix _ ->
+            word |> foundSuffixInR1 suffix replacement
+        | _ -> Next(word)
