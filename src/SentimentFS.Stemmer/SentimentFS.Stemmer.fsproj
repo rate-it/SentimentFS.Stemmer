@@ -25,6 +25,7 @@
     <Compile Include="Step0.fs" />
     <Compile Include="Step1.fs" />
     <Compile Include="Step2.fs" />
+    <Compile Include="Step3.fs" />
   </ItemGroup>
   <Import Project="..\..\.paket\Paket.Restore.targets" />
 </Project>
