@@ -40,3 +40,16 @@ module Rules =
         | SuffixMatch suffix _ ->
             word |> foundSuffixInR1 suffix replacement
         | _ -> Next(word)
+
+    [<CompiledName("Invariant")>]
+    let invariant(word:string) =
+        (word, [| "inning"; "outing"; "canning"; "herring"; "earring"; "proceed"; "exceed"; "succeed" |] |> Array.exists(fun x -> x = word))
+
+    let private normalR1(word: string) =
+        match word with
+        | FirstMatch rVc result ->
+            word |> replacePrefix result ""
+        | _ -> ""
+
+    [<CompiledName("R2")>]
+    let r2 = r1 >> normalR1

@@ -68,4 +68,35 @@ module Rules =
                     let subject = ("nationalli" |> Rules.replaceR1Suffix "alli" "al")
                     Expect.equal subject (Found("national")) "should be Found and equal national"
             ]
+            testList "invariant" [
+                testCase "inning" <| fun _ ->
+                    let subject = Rules.invariant "inning"
+                    Expect.equal subject ("inning", true) "should be true"
+                testCase "test" <| fun _ ->
+                    let subject = Rules.invariant "test"
+                    Expect.equal subject ("test", false) "should be false"
+            ]
+            testList "r2" [
+                testCase "beautiful" <| fun _ ->
+                    let subject = Rules.r2 "beautiful"
+                    Expect.equal subject "ul" "should equal ul"
+                testCase "beauty" <| fun _ ->
+                    let subject = Rules.r2 "beauty"
+                    Expect.equal subject "" "should be empty string"
+                testCase "beaut" <| fun _ ->
+                    let subject = Rules.r2 "beaut"
+                    Expect.equal subject "" "should be empty string"
+                testCase "beau" <| fun _ ->
+                    let subject = Rules.r2 "beau"
+                    Expect.equal subject "" "should be empty string"
+                testCase "animadversion" <| fun _ ->
+                    let subject = Rules.r2 "animadversion"
+                    Expect.equal subject "adversion" "should equal adversion"
+                testCase "sprinkled" <| fun _ ->
+                    let subject = Rules.r2 "sprinkled"
+                    Expect.equal subject "" "should be empty string"
+                testCase "eucharist" <| fun _ ->
+                    let subject = Rules.r2 "eucharist"
+                    Expect.equal subject "ist" "should equal ist"
+            ]
         ]
