@@ -1,6 +1,6 @@
 namespace SentimentFS.Stemmer.Steps
 
-module Step1 =
+module Step1a =
     open System.Text.RegularExpressions
     open SentimentFS.TextUtilities.Text
     open SentimentFS.Stemmer.Rules

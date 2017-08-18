@@ -7,54 +7,47 @@ module Step2 =
     open SentimentFS.Stemmer.Rules
     open SentimentFS.Stemmer
 
-    [<CompiledName("postRemoveEdEdlyIngIngly")>]
-    let postRemoveEdEdlyIngIngly(word: string) =
-        if endsWith (word) ([|"at"; "bi"; "iz"|]) then
-            word + "e"
-        elif endsWith (word) (doubles) then
-            word.Substring(0, word.Length - 1)
-        elif Rules.isShort(word) then
-            word + "e"
-        else
-            word
-
-    [<CompiledName("RemoveEdEdlyIngIngly")>]
-    let removeEdEdlyIngIngly(word: string) =
-        let rule = sprintf "(%s.*)(ingly|edly|ing|ed)$" Rules.vowels;
-        if Regex.IsMatch(word, rule) then
-            Found(Regex.Replace(word, rule,"$1") |> postRemoveEdEdlyIngIngly)
+    let private replaceSuffixOgi(word: string) =
+        if (endsWith word [|(Rules.r1(word))|]) && (endsWith word [|"logi"|]) then
+            Found(word |> replaceSuffix "ogi" "og")
         else
             Next(word)
 
-    [<CompiledName("ReplaceEedEddlyInR1")>]
-    let replaceEedEddlyInR1(word: string) =
-        if endsWith(Rules.r1(word))([|"eedly"; "eed"|]) then
-            Found((word |> replaceSuffix "eedly" "ee" |> replaceSuffix "eed" "ee"))
-        else
-            Found(word)
-
-    [<CompiledName("ReplaceEedEedly")>]
-    let replaceEedEedly(word: string) =
-        if endsWith(word)([|"eedly"; "eed"|]) then
-            word |> replaceEedEddlyInR1
+    let private replaceSuffixLi(word: string) =
+        if (endsWith (Rules.r1(word)) [|"li"|]) && (endsWith word (Rules.liEndings)) then
+            Found(word |> replaceSuffix "li" "")
         else
             Next(word)
 
-    [<CompiledName("ReplaceSuffix")>]
-    let replaceSuffix(word: string) =
-        match word |> replaceEedEedly with
-        | Next(word) ->
-            match word |> removeEdEdlyIngIngly with
-            | Next(word) -> word
-            | Found(word) -> word
-        | Found(word) -> word
-
-    [<CompiledName("ReplaceSuffixY")>]
-    let replaceSuffixY(word: string) =
-        match word.ToLower() with
-        | SuffixMatch (sprintf ".+%sy" Rules.consonant) _ ->
-            word.Substring(0, word.Length - 1) + "i"
-        | _ -> word
+    [<CompiledName("ReplaceSuffixInR1")>]
+    let replaceSuffixInR1 word =
+        let result = Word.word {
+            return! Rules.replaceR1Suffix ("ization") ("ize") word
+            return! Rules.replaceR1Suffix ("ational") ("ate") word
+            return! Rules.replaceR1Suffix ("fulness") ("ful") word
+            return! Rules.replaceR1Suffix ("ousness") ("ous") word
+            return! Rules.replaceR1Suffix ("iveness") ("ive") word
+            return! Rules.replaceR1Suffix ("tional") ("tion") word
+            return! Rules.replaceR1Suffix ("biliti") ("ble") word
+            return! Rules.replaceR1Suffix ("lessli") ("less") word
+            return! Rules.replaceR1Suffix ("entli") ("ent") word
+            return! Rules.replaceR1Suffix ("ation") ("ate") word
+            return! Rules.replaceR1Suffix ("alism") ("al") word
+            return! Rules.replaceR1Suffix ("aliti") ("al") word
+            return! Rules.replaceR1Suffix ("ousli") ("ous") word
+            return! Rules.replaceR1Suffix ("iviti") ("ive") word
+            return! Rules.replaceR1Suffix ("fulli") ("ful") word
+            return! Rules.replaceR1Suffix ("enci") ("ence") word
+            return! Rules.replaceR1Suffix ("anci") ("ance") word
+            return! Rules.replaceR1Suffix ("abli") ("able") word
+            return! Rules.replaceR1Suffix ("izer") ("ize") word
+            return! Rules.replaceR1Suffix ("ator") ("ate") word
+            return! Rules.replaceR1Suffix ("alli") ("al") word
+            return! Rules.replaceR1Suffix ("bli") ("ble") word
+            return! replaceSuffixOgi word
+            return! replaceSuffixLi word
+        }
+        match result with Found x -> x | Next x -> x
 
     [<CompiledName("Apply")>]
-    let apply = replaceSuffix >> replaceSuffixY
+    let apply = replaceSuffixInR1

@@ -8,28 +8,22 @@ module Step4 =
     [<Tests>]
     let tests =
         testList "Step4" [
-            testCase "proportional" <| fun _ ->
-                let subject = Step4.apply "proportional"
-                Expect.equal subject "proportion" "should equal proportion"
-            testCase "duplicate" <| fun _ ->
-                let subject = Step4.apply "duplicate"
-                Expect.equal subject "duplic" "should equal duplic"
-            testCase "dupliciti" <| fun _ ->
-                let subject = Step4.apply "dupliciti"
-                Expect.equal subject "duplic" "should equal duplic"
-            testCase "duplical" <| fun _ ->
-                let subject = Step4.apply "duplical"
-                Expect.equal subject "duplic" "should equal duplic"
-            testCase "colourful" <| fun _ ->
-                let subject = Step4.apply "colourful"
-                Expect.equal subject "colour" "should equal colour"
-            testCase "eagerness" <| fun _ ->
-                let subject = Step4.apply "eagerness"
-                Expect.equal subject "eager" "should equal eager"
-            testCase "negative" <| fun _ ->
-                let subject = Step4.apply "negative"
-                Expect.equal subject "negative" "should equal negative"
-            testCase "imaginative" <| fun _ ->
-                let subject = Step4.apply "imaginative"
-                Expect.equal subject "imagin" "should equal imagin"
+            testCase "national" <| fun _ ->
+                let subject = Step4.apply "national"
+                Expect.equal subject "nation" "should equal nation"
+            testCase "association" <| fun _ ->
+                let subject = Step4.apply "association"
+                Expect.equal subject "associat" "should equal associat"
+            testCase "apprehension" <| fun _ ->
+                let subject = Step4.apply "apprehension"
+                Expect.equal subject "apprehens" "should equal apprehens"
+            testCase "concepcion" <| fun _ ->
+                let subject = Step4.apply "concepcion"
+                Expect.equal subject "concepcion" "should equal concepcion"
+            testCase "addition" <| fun _ ->
+                let subject = Step4.apply "addition"
+                Expect.equal subject "addit" "should equal addit"
+            testCase "agreement" <| fun _ ->
+                let subject = Step4.apply "agreement"
+                Expect.equal subject "agreement" "should equal agreement"
         ]

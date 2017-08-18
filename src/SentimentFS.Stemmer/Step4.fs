@@ -7,23 +7,28 @@ module Step4 =
     open SentimentFS.Stemmer.Rules
     open SentimentFS.Stemmer
 
-    let private replaceSuffixAtiveInR2(word: string) =
-        if (endsWith (Rules.r2(word)) ([|"ative"|])) then
-            Found((word |> replaceSuffix "ative" ""))
+    let private removeSuffixIon(word:string) =
+        if endsWith(Rules.r2(word))([|"ion"|]) && endsWith(word)([|"sion"; "tion"|]) then
+            Found(word |> replaceSuffix "ion" "")
         else
             Next(word)
+
+    let private removeSuffixinR2(word: string)(suffix: string) =
+        if endsWith(Rules.r2(word))([|suffix|]) then
+            Found(word |> replaceSuffix suffix "")
+        else
+            Next(word)
+
+    let private removeSuffix(word: string) =
+        match word with
+        | SuffixMatch "(al|ance|ence|er|ic|able|ible|ant|ement|ment|ent|ism|ate|iti|ous|ive|ize)" result ->
+            removeSuffixinR2 word result
+        | _ -> Next(word)
 
     [<CompiledName("Apply")>]
     let apply word =
         let result = Word.word {
-            return! Rules.replaceR1Suffix "ational" "ate" word
-            return! Rules.replaceR1Suffix "tional" "tion" word
-            return! Rules.replaceR1Suffix "alize" "al" word
-            return! Rules.replaceR1Suffix "icate" "ic" word
-            return! Rules.replaceR1Suffix "iciti" "ic" word
-            return! Rules.replaceR1Suffix "ical" "ic" word
-            return! Rules.replaceR1Suffix "ness" "" word
-            return! Rules.replaceR1Suffix "ful" "" word
-            return! replaceSuffixAtiveInR2 word
+            return! removeSuffix word
+            return! removeSuffixIon word
         }
         match result with Found x -> x | Next x -> x
