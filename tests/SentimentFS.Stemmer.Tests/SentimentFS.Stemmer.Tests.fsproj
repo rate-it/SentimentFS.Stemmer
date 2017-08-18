@@ -10,6 +10,7 @@
     <Compile Include="Step2.fs" />
     <Compile Include="Step3.fs" />
     <Compile Include="Step4.fs" />
+    <Compile Include="Step5.fs" />
     <Compile Include="Main.fs" />
   </ItemGroup>
   <ItemGroup>
