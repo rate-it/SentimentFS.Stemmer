@@ -7,8 +7,7 @@ module Stemmer =
     open System.IO
     let testsFromOfficialDiffs =
         seq {
-            use diffs = System.Reflection.Assembly.GetEntryAssembly().GetManifestResourceStream("diffs.txt")
-            let reader = new StreamReader(diffs)
+            let reader = new StreamReader("diffs.txt")
             let mutable line = reader.ReadLine()
             while not (isNull line) do
                 let split = line.Split([| ' ' |], System.StringSplitOptions.RemoveEmptyEntries)
