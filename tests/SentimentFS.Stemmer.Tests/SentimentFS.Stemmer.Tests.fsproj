@@ -4,6 +4,11 @@
         <TargetFrameworks>netcoreapp2.0;net461</TargetFrameworks>
     </PropertyGroup>
     <ItemGroup>
+        <Content Include="*.txt">
+            <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+        </Content>
+    </ItemGroup>
+    <ItemGroup>
         <Compile Include="Rules.fs" />
         <Compile Include="Step0.fs" />
         <Compile Include="Step1a.fs" />
@@ -13,6 +18,7 @@
         <Compile Include="Step4.fs" />
         <Compile Include="Step5.fs" />
         <Compile Include="SpecialWord.fs" />
+        <Compile Include="Stemmer.fs" />
         <Compile Include="Main.fs" />
     </ItemGroup>
     <ItemGroup>
