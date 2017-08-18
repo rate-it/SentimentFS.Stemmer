@@ -1,6 +1,6 @@
 namespace SentimentFS.Stemmer.Tests.Steps
 
-module Step4 =
+module Step5 =
     open Expecto
     open SentimentFS.Stemmer.Steps
     open SentimentFS.Stemmer
