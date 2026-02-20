@@ -1,11 +1,8 @@
 source https://www.nuget.org/api/v2
-source https://www.myget.org/F/sentimentfs/api/v2
 
-clitool dotnet-mono
-nuget Expecto >= 5.0.0
-nuget FSharp.Core >= 4.2.0
-nuget SentimentFS.TextUtilities
-clitool Microsoft.DotNet.Watcher.Tools 2.0.0
+nuget Expecto 
+nuget FSharp.Core
+github rate-it/SentimentFS.TextUtilities
 
 group Build
     source https://www.nuget.org/api/v2
