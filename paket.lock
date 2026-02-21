@@ -1,66 +1,14 @@
 NUGET
   remote: https://www.nuget.org/api/v2
-    Argu (6.2.5) - restriction: >= netcoreapp2.1
-      FSharp.Core (>= 6.0) - restriction: >= netstandard2.0
-      System.Configuration.ConfigurationManager (>= 4.4) - restriction: >= netstandard2.0
-    Chessie (0.6) - restriction: >= netcoreapp2.1
-      FSharp.Core (>= 4.0.1.7-alpha) - restriction: >= netstandard1.6
-      NETStandard.Library (>= 1.6) - restriction: >= netstandard1.6
-    dotnet-mono (0.5.6)
-      Argu (>= 4.2.1) - restriction: >= netcoreapp2.1
-      Chessie (>= 0.6) - restriction: >= netcoreapp2.1
-      FSharp.Core (>= 4.2.3) - restriction: >= netcoreapp2.1
-      Microsoft.Build (>= 16.0.461) - restriction: >= netcoreapp2.1
-      Microsoft.Build.Utilities.Core (>= 16.0.461) - restriction: >= netcoreapp2.1
     Expecto (10.2.3)
       FSharp.Core (>= 7.0.200) - restriction: >= net6.0
       Mono.Cecil (>= 0.11.4 < 1.0) - restriction: >= net6.0
     FSharp.Core (10.0.103)
-    Microsoft.Build (18.3.3) - restriction: >= netcoreapp2.1
-      Microsoft.Build.Framework (>= 18.3.3) - restriction: || (>= net10.0) (>= net472)
-      Microsoft.NET.StringTools (>= 18.3.3) - restriction: || (>= net10.0) (>= net472)
-      System.Configuration.ConfigurationManager (>= 9.0.11) - restriction: || (>= net10.0) (>= net472)
-      System.Diagnostics.EventLog (>= 9.0.11) - restriction: >= net10.0
-      System.Reflection.MetadataLoadContext (>= 9.0.11) - restriction: || (>= net10.0) (>= net472)
-      System.Security.Cryptography.ProtectedData (>= 9.0.11) - restriction: >= net10.0
-    Microsoft.Build.Framework (18.3.3) - restriction: >= netcoreapp2.1
-    Microsoft.Build.Utilities.Core (18.3.3) - restriction: >= netcoreapp2.1
-      Microsoft.Build.Framework (>= 18.3.3) - restriction: >= netstandard2.0
-      Microsoft.NET.StringTools (>= 18.3.3) - restriction: || (>= net10.0) (>= net472)
-      System.Configuration.ConfigurationManager (>= 9.0.11) - restriction: || (>= net10.0) (>= net472)
-      System.Diagnostics.EventLog (>= 9.0.11) - restriction: >= net10.0
-      System.Security.Cryptography.ProtectedData (>= 9.0.11) - restriction: >= net10.0
-    Microsoft.DotNet.Watcher.Tools (2.0.2)
-      Microsoft.NETCore.App (>= 2.0.7) - restriction: >= netcoreapp2.0
-    Microsoft.NET.StringTools (18.3.3) - restriction: || (>= net10.0) (&& (>= net472) (>= netcoreapp2.1))
-    Microsoft.NETCore.App (2.2.8) - restriction: >= netcoreapp2.0
-      Microsoft.NETCore.DotNetHostPolicy (>= 2.2.8) - restriction: >= netcoreapp2.2
-      Microsoft.NETCore.Platforms (>= 2.2.4) - restriction: >= netcoreapp2.2
-      Microsoft.NETCore.Targets (>= 2.0) - restriction: >= netcoreapp2.2
-      NETStandard.Library (>= 2.0.3) - restriction: >= netcoreapp2.2
-    Microsoft.NETCore.DotNetAppHost (10.0.3) - restriction: >= netcoreapp2.2
-    Microsoft.NETCore.DotNetHostPolicy (8.0.24) - restriction: >= netcoreapp2.2
-      Microsoft.NETCore.DotNetHostResolver (>= 8.0.24)
-    Microsoft.NETCore.DotNetHostResolver (8.0.24) - restriction: >= netcoreapp2.2
-      Microsoft.NETCore.DotNetAppHost (>= 8.0.24)
-    Microsoft.NETCore.Platforms (7.0.4) - restriction: >= netcoreapp2.2
-    Microsoft.NETCore.Targets (5.0) - restriction: >= netcoreapp2.2
     Mono.Cecil (0.11.6) - restriction: >= net6.0
-    NETStandard.Library (2.0.3) - restriction: >= netcoreapp2.1
-      Microsoft.NETCore.Platforms (>= 1.1) - restriction: || (&& (>= net45) (< netstandard1.3)) (&& (< net45) (>= netstandard1.1) (< netstandard1.2) (< win8)) (&& (< net45) (>= netstandard1.2) (< netstandard1.3) (< win8) (< wpa81)) (&& (< net45) (>= netstandard1.3) (< netstandard1.4) (< win8) (< wpa81)) (&& (< net45) (>= netstandard1.4) (< netstandard1.5) (< win8) (< wpa81)) (&& (< net45) (>= netstandard1.5) (< netstandard1.6) (< win8) (< wpa81)) (&& (< net45) (>= netstandard1.6) (< netstandard2.0) (< win8) (< wpa81)) (&& (< net45) (>= netstandard2.0)) (&& (>= net46) (< netstandard1.4)) (>= net461) (>= netcoreapp2.0) (&& (>= netstandard1.0) (< portable-net45+win8+wpa81)) (&& (< netstandard1.0) (>= portable-net45+win8) (< win8)) (&& (< netstandard1.0) (< portable-net45+win8) (>= portable-net45+win8+wpa81)) (&& (< netstandard1.0) (>= portable-net45+win8+wp8+wpa81) (< portable-net45+win8+wpa81)) (&& (< netstandard1.0) (>= win8)) (&& (< netstandard1.3) (< win8) (>= wpa81)) (&& (< netstandard1.5) (>= uap10.0)) (>= uap10.1) (>= wp8)
-    System.Configuration.ConfigurationManager (10.0.3) - restriction: >= netcoreapp2.1
-      System.Diagnostics.EventLog (>= 10.0.3) - restriction: >= net8.0
-      System.Security.Cryptography.ProtectedData (>= 10.0.3) - restriction: || (&& (< net462) (>= netstandard2.0)) (>= net8.0)
-    System.Diagnostics.EventLog (10.0.3) - restriction: || (>= net10.0) (&& (>= net472) (>= net8.0))
-    System.Reflection.MetadataLoadContext (10.0.3) - restriction: || (>= net10.0) (&& (>= net472) (>= netcoreapp2.1))
-    System.Security.Cryptography.ProtectedData (10.0.3) - restriction: || (>= net10.0) (&& (>= net472) (>= net8.0)) (&& (>= net472) (>= netcoreapp2.1))
 GITHUB
   remote: rate-it/SentimentFS.TextUtilities
-    FULLPROJECT (c9dabf5c49534361929829351cce880ab030473c)
-      dotnet-mono
-      Expecto (>= 5.0)
-      FSharp.Core (>= 4.2)
-      Microsoft.DotNet.Watcher.Tools (>= 2.0)
+    src/SentimentFS.TextUtilities/Text.fs (ff26030dedcf98c55cdec6b158ac9be595299d1e)
+    src/SentimentFS.TextUtilities/Tokenization.fs (ff26030dedcf98c55cdec6b158ac9be595299d1e)
 GROUP Build
 NUGET
   remote: https://www.nuget.org/api/v2

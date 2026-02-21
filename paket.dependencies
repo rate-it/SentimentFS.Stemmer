@@ -2,7 +2,8 @@ source https://www.nuget.org/api/v2
 
 nuget Expecto 
 nuget FSharp.Core
-github rate-it/SentimentFS.TextUtilities
+github rate-it/SentimentFS.TextUtilities src/SentimentFS.TextUtilities/Text.fs
+github rate-it/SentimentFS.TextUtilities src/SentimentFS.TextUtilities/Tokenization.fs
 
 group Build
     source https://www.nuget.org/api/v2

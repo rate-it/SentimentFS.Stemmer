@@ -1,36 +1,45 @@
+<?xml version="1.0" encoding="utf-8"?>
 <Project Sdk="Microsoft.NET.Sdk">
-    <PropertyGroup>
-        <TargetFramework>net10.0</TargetFramework>
-    </PropertyGroup>
-    <PropertyGroup>
-        <Title>SentimentFS_Stemmer</Title>
-        <Description>SentimentFS_Stemmer does the thing!</Description>
-        <!-- summary is not migrated from project.json, but you can use the <Description> property for that if needed. -->
-        <PackageTags>f#, fsharp</PackageTags>
-        <PackageProjectUrl>https://github.com/SentimentFS/SentimentFS.Stemmer</PackageProjectUrl>
-        <PackageLicenseUrl>https://github.com/SentimentFS/SentimentFS.Stemmer/blob/master/LICENSE.md</PackageLicenseUrl>
-        <PackageRequireLicenseAcceptance>false</PackageRequireLicenseAcceptance>
-        <RepositoryType>git</RepositoryType>
-        <Authors>MyUsername</Authors>
-        <RepositoryUrl>https://github.com/SentimentFS/SentimentFS.Stemmer</RepositoryUrl>
-        <!-- owners is not supported in MSBuild -->
-    </PropertyGroup>
-    <PropertyGroup Condition="'$(Configuration)'=='Release'">
-        <Optimize>true</Optimize>
-        <Tailcalls>true</Tailcalls>
-    </PropertyGroup>
-    <ItemGroup>
-        <Compile Include="Config.fs" />
-        <Compile Include="Rules.fs" />
-        <Compile Include="Step0.fs" />
-        <Compile Include="Step1a.fs" />
-        <Compile Include="Step1b.fs" />
-        <Compile Include="Step2.fs" />
-        <Compile Include="Step3.fs" />
-        <Compile Include="Step4.fs" />
-        <Compile Include="Step5.fs" />
-        <Compile Include="SpecialWord.fs" />
-        <Compile Include="Main.fs" />
-    </ItemGroup>
-    <Import Project="..\..\.paket\Paket.Restore.targets" />
+  <PropertyGroup>
+    <TargetFramework>net10.0</TargetFramework>
+  </PropertyGroup>
+  <PropertyGroup>
+    <Title>SentimentFS_Stemmer</Title>
+    <Description>SentimentFS_Stemmer does the thing!</Description>
+    <!-- summary is not migrated from project.json, but you can use the <Description> property for that if needed. -->
+    <PackageTags>f#, fsharp</PackageTags>
+    <PackageProjectUrl>https://github.com/SentimentFS/SentimentFS.Stemmer</PackageProjectUrl>
+    <PackageLicenseUrl>https://github.com/SentimentFS/SentimentFS.Stemmer/blob/master/LICENSE.md</PackageLicenseUrl>
+    <PackageRequireLicenseAcceptance>false</PackageRequireLicenseAcceptance>
+    <RepositoryType>git</RepositoryType>
+    <Authors>MyUsername</Authors>
+    <RepositoryUrl>https://github.com/SentimentFS/SentimentFS.Stemmer</RepositoryUrl>
+    <!-- owners is not supported in MSBuild -->
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)'=='Release'">
+    <Optimize>true</Optimize>
+    <Tailcalls>true</Tailcalls>
+  </PropertyGroup>
+  <ItemGroup>
+    <Compile Include="..\..\paket-files\rate-it\SentimentFS.TextUtilities\src\SentimentFS.TextUtilities\Text.fs">
+      <Paket>True</Paket>
+      <Link>paket-files/Text.fs</Link>
+    </Compile>
+    <Compile Include="..\..\paket-files\rate-it\SentimentFS.TextUtilities\src\SentimentFS.TextUtilities\Tokenization.fs">
+      <Paket>True</Paket>
+      <Link>paket-files/Tokenization.fs</Link>
+    </Compile>
+    <Compile Include="Config.fs" />
+    <Compile Include="Rules.fs" />
+    <Compile Include="Step0.fs" />
+    <Compile Include="Step1a.fs" />
+    <Compile Include="Step1b.fs" />
+    <Compile Include="Step2.fs" />
+    <Compile Include="Step3.fs" />
+    <Compile Include="Step4.fs" />
+    <Compile Include="Step5.fs" />
+    <Compile Include="SpecialWord.fs" />
+    <Compile Include="Main.fs" />
+  </ItemGroup>
+  <Import Project="..\..\.paket\Paket.Restore.targets" />
 </Project>

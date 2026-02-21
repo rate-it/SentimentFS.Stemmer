@@ -19,7 +19,7 @@ module SpecialWord =
 
     [<Tests>]
     let apply =
-        testList "SpecialWord.specialWord" [
+        testList "Apply" [
             testCase "when map contains word" <| fun  _ ->
                 let subject = "skis" |> SpecialWord.apply
                 Expect.equal subject (Found("ski")) "should equal ski"
