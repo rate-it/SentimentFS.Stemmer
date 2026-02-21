@@ -1,18 +1,21 @@
 namespace SentimentFS.Stemmer
 
+open System.Collections.Generic
+
 module Rules =
     open System.Text.RegularExpressions
     open SentimentFS.TextUtilities.Regex
     open SentimentFS.TextUtilities.Text
 
+    let private invariants = HashSet[| "inning"; "outing"; "canning"; "herring"; "earring"; "proceed"; "exceed"; "succeed" |];
     [<Literal>]
     let Vowels = "aeiouy"
-    let vowels = sprintf "[%s]" Vowels
-    let consonant  = sprintf "[^%s]" Vowels
-    let nonVowelWXY = sprintf "[^%swxY]" Vowels
+    let vowels = $"[%s{Vowels}]"
+    let consonant  = $"[^%s{Vowels}]"
+    let nonVowelWXY = $"[^%s{Vowels}wxY]"
     let doubles = [|"bb"; "dd"; "ff"; "gg"; "mm"; "nn"; "pp"; "rr"; "tt"|]
-    let shortSyllable = sprintf "((%s%s%s)|(^%s%s))" consonant vowels nonVowelWXY vowels consonant
-    let rVc = sprintf "^%s*%s+%s" consonant vowels consonant
+    let shortSyllable = $"((%s{consonant}%s{vowels}%s{nonVowelWXY})|(^%s{vowels}%s{consonant}))"
+    let rVc = $"^%s{consonant}*%s{vowels}+%s{consonant}"
     let liEndings = [|"cli"; "dli"; "eli"; "gli"; "hli"; "kli"; "mli"; "nli"; "rli"; "tli"|]
 
     [<CompiledName("R1")>]
@@ -43,7 +46,7 @@ module Rules =
 
     [<CompiledName("Invariant")>]
     let invariant(word:string) =
-        (word, [| "inning"; "outing"; "canning"; "herring"; "earring"; "proceed"; "exceed"; "succeed" |] |> Array.exists(fun x -> x = word))
+        (word, invariants.Contains(word))
 
     let private normalR1(word: string) =
         match word with
