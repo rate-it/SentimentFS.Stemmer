@@ -7,6 +7,7 @@ module Step4 =
     open SentimentFS.Stemmer.Rules
     open SentimentFS.Stemmer
 
+    let regex = Regex("(al|ance|ence|er|ic|able|ible|ant|ement|ment|ent|ism|ate|iti|ous|ive|ize)$")
     let private removeSuffixIon(word:string) =
         if endsWith(Rules.r2(word))([|"ion"|]) && endsWith(word)([|"sion"; "tion"|]) then
             Found(word |> replaceSuffix "ion" "")
@@ -21,7 +22,7 @@ module Step4 =
 
     let private removeSuffix(word: string) =
         match word with
-        | SuffixMatch "(al|ance|ence|er|ic|able|ible|ant|ement|ment|ent|ism|ate|iti|ous|ive|ize)" result ->
+        | SuffixRegexMatch regex result ->
             removeSuffixinR2 word result
         | _ -> Next(word)
 

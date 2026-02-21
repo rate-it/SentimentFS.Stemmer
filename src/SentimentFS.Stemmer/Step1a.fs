@@ -6,6 +6,8 @@ module Step1a =
     open SentimentFS.Stemmer.Rules
     open SentimentFS.Stemmer
 
+    let private sRegex = Regex( $"([%s{Vowels}]).+s$", RegexOptions.Compiled)
+
     [<CompiledName("ReplaceSses")>]
     let replaceSses(word: string) =
         if word.EndsWith("sses") then
@@ -26,7 +28,7 @@ module Step1a =
 
     [<CompiledName("RemoveS")>]
     let removeS(word: string) =
-        if Regex.IsMatch(word, (sprintf "([%s]).+s$" Vowels)) then
+        if sRegex.IsMatch(word) then
             Found(word |> replaceSuffix "s" "")
         else
             Next(word)

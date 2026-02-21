@@ -18,18 +18,22 @@ module Rules =
     let rVc = $"^%s{consonant}*%s{vowels}+%s{consonant}"
     let liEndings = [|"cli"; "dli"; "eli"; "gli"; "hli"; "kli"; "mli"; "nli"; "rli"; "tli"|]
 
+    let private r1Regex = Regex("^(gener|commun|arsen)", RegexOptions.Compiled)
+    let private r1RvcRegex = Regex(rVc, RegexOptions.Compiled)
+    let private shortSyllableRegex = Regex(shortSyllable, RegexOptions.Compiled)
+
     [<CompiledName("R1")>]
     let r1(word: string) =
         match word with
-        | FirstMatch "^(gener|commun|arsen)" matched ->
+        | FirstRegexMatch r1Regex matched ->
             word |> replacePrefix matched ""
-        | FirstMatch rVc matched  ->
+        | FirstRegexMatch r1RvcRegex matched  ->
             word |> replacePrefix matched ""
         | _ -> ""
 
     [<CompiledName("IsShort")>]
     let isShort(word: string) =
-        r1(word) = "" && Regex.IsMatch(word, shortSyllable)
+        r1(word) = "" && shortSyllableRegex.IsMatch(word)
 
     let private foundSuffixInR1(suffix: string) (replacement: string) (word: string) =
         match word |> r1 with

@@ -2,27 +2,11 @@ namespace SentimentFS.Stemmer
 
 
 module SpecialWord =
+    let map =  [("skis", "ski"); ("skies" ,"sky"); ("dying" ,"die"); ("lying" ,"lie"); ("tying" ,"tie"); ("idly"  ,"idl"); ("gently","gentl"); ("ugly"  ,"ugli"); ("early" ,"earli"); ("only"  ,"onli"); ("singly","singl"); ("sky"   ,"sky"); ("news"  ,"news"); ("howe"  ,"howe"); ("atlas" ,"atlas"); ("cosmos","cosmos"); ("bias"  ,"bias"); ("andes" ,"andes")] |> dict
     let specialWord(word: string) =
-        let map = [ ("skis", "ski")
-                    ("skies" ,"sky")
-                    ("dying" ,"die")
-                    ("lying" ,"lie")
-                    ("tying" ,"tie")
-                    ("idly"  ,"idl")
-                    ("gently","gentl")
-                    ("ugly"  ,"ugli")
-                    ("early" ,"earli")
-                    ("only"  ,"onli")
-                    ("singly","singl")
-                    ("sky"   ,"sky")
-                    ("news"  ,"news")
-                    ("howe"  ,"howe")
-                    ("atlas" ,"atlas")
-                    ("cosmos","cosmos")
-                    ("bias"  ,"bias")
-                    ("andes" ,"andes")
-                  ] |> Map.ofList
-        map.TryFind(word)
+        match map.TryGetValue(word) with
+        | true, v -> Some(v)
+        | _ -> None
 
     [<CompiledName("Appy")>]
     let apply(word: string) =

@@ -5,6 +5,8 @@ module Step0 =
     open SentimentFS.TextUtilities.Text
     open SentimentFS.Stemmer.Rules
 
+    let yRegex = Regex($"^y|([%s{Vowels}])y", RegexOptions.Compiled)
+
     [<CompiledName("TrimEndApostrophe")>]
     let trimEndApostrophe = removeSuffix "'"
 
@@ -17,7 +19,7 @@ module Step0 =
     [<CompiledName("MarkConsonantY")>]
     let markConsonantY(word: string) =
         if word.Contains("y") then
-            Regex.Replace(word, (sprintf "^y|([%s])y" Vowels), "$1Y")
+            yRegex.Replace(word, "$1Y")
         else
             word
 
