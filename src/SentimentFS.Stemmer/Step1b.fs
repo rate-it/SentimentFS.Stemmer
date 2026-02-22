@@ -6,6 +6,8 @@ module Step1b =
     open SentimentFS.TextUtilities.Regex
     open SentimentFS.Stemmer.Rules
     open SentimentFS.Stemmer
+    let private edly = [|"eedly"; "eed"|]
+    let private rule = Regex($"(%s{Rules.vowels}.*)(ingly|edly|ing|ed)$")
 
     [<CompiledName("postRemoveEdEdlyIngIngly")>]
     let postRemoveEdEdlyIngIngly(word: string) =
@@ -20,22 +22,21 @@ module Step1b =
 
     [<CompiledName("RemoveEdEdlyIngIngly")>]
     let removeEdEdlyIngIngly(word: string) =
-        let rule = sprintf "(%s.*)(ingly|edly|ing|ed)$" Rules.vowels;
-        if Regex.IsMatch(word, rule) then
-            Found(Regex.Replace(word, rule,"$1") |> postRemoveEdEdlyIngIngly)
+        if rule.IsMatch(word) then
+            Found(rule.Replace(word,"$1") |> postRemoveEdEdlyIngIngly)
         else
             Next(word)
 
     [<CompiledName("ReplaceEedEddlyInR1")>]
     let replaceEedEddlyInR1(word: string) =
-        if endsWith(Rules.r1(word))([|"eedly"; "eed"|]) then
+        if endsWith(Rules.r1(word))(edly) then
             Found((word |> replaceSuffix "eedly" "ee" |> replaceSuffix "eed" "ee"))
         else
             Found(word)
 
     [<CompiledName("ReplaceEedEedly")>]
     let replaceEedEedly(word: string) =
-        if endsWith(word)([|"eedly"; "eed"|]) then
+        if endsWith(word)(edly) then
             word |> replaceEedEddlyInR1
         else
             Next(word)
